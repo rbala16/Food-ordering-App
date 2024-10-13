@@ -1,15 +1,43 @@
-import React from 'react'
+import React, { useState,useEffect } from 'react'
 import RestaurantCard from './RestaurantCard';
-import { mock_restaurants } from '../utils/constants';
+
 
 const Body = () => {
+
+
+  useEffect(() => {
+    console.log("component is re rendered")
+    fetchData()
+}, [])
+
+  let [restaurants,setRestaurants] = useState([]);
+
+  const fetchData = async() => {
+    const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=30.76879019999999&lng=76.5753719&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+    const json = await data.json();
+    const resData = json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants;
+    setRestaurants(resData);
+  }
   return (
     <div className='body'>
     <div className='search'>Search</div>
+    <div className='filter'>
+    <button onClick={()=>{
+     const filteredList =  restaurants.filter((restaurant)=>{
+        return restaurant.info.avgRating >= 4.2
+      })
+      console.log("filteredList",filteredList);
+      setRestaurants(filteredList);
+      console.log("restaurant after filter",restaurants)
+    }}>
+    Top Rated Restaurant
+    </button>
+    </div>
     <div className='res-container'>
       {
-        mock_restaurants.map((restaurant)=>{
+       restaurants && restaurants.map((restaurant,index)=>{
           return <RestaurantCard
+          key={index}
           name={restaurant.info.name}
           cuisines={restaurant.info.cuisines.join(" , ")}
           deliveryTime={restaurant.info.sla.slaString}
