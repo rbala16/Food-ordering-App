@@ -7,3 +7,5 @@ npm install --save-dev parcel
   // const[filteredList] = useState(mock_restaurants);
 
     let [restaurants] = useState(mock_restaurants);
+
+    Shimmer=Skeleton
