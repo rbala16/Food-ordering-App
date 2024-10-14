@@ -34,7 +34,7 @@ const Body = () => {
           })
           setRestaurants(filteredList);
         }}>Search</button>
-        Search
+        
       </div>
       <div className="filter-top-rated">
         <button
