@@ -20,16 +20,27 @@ const Body = () => {
     setRestaurants(resData);
   };
 
- 
-  return (restaurants.length === 0) ? <Shimmer/> :
-   (
+  return restaurants.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
-      <div className="search">Search</div>
-      <div className="filter">
+      <div className="search-bar">
+        <input type="text" onChange={(e)=>{
+         searchText =  e.target.value;
+        }}/>
+        <button className="btn-search" onClick={()=>{
+          const filteredList = restaurants.filter((restaurant)=>{
+            return restaurant.info.name.includes(searchText);
+          })
+          setRestaurants(filteredList);
+        }}>Search</button>
+        Search
+      </div>
+      <div className="filter-top-rated">
         <button
           onClick={() => {
             const filteredList = restaurants.filter((restaurant) => {
-              return restaurant.info.avgRating >= 4.2;
+              return restaurant.info.avgRating >= 4.4;
             });
             console.log("filteredList", filteredList);
             setRestaurants(filteredList);
