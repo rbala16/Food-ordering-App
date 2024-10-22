@@ -1,5 +1,6 @@
 export const LOGO_IMG = "https://s3.amazonaws.com/cdn.designcrowd.com/blog/39-Food-Delivery-Logos-That-Will-Leave-You-Hungry-For-More/food-app-by-town-brandcrowd.png";
 export const RES_IMG_URL = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
+export const ITEM_CATEG_IMG_URL = "MERCHANDISING_BANNERS/IMAGES/MERCH/2024/7/2/";
 export const mock_restaurants = [
     {
         "info": {

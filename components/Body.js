@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
+import ItemCategories from "./ItemCategories";
 
 const Body = () => {
   const [restaurants, setRestaurants] = useState([]); //Restaurant to display
@@ -8,6 +9,7 @@ const Body = () => {
   const [searchText, setSearchText] = useState(""); //Track search
   const [isLoading, setIsLoading] = useState(true); // Track loading state
   const [error, setError] = useState(null); // Track errors
+  const [menuCategories, setMenuCategories] = useState([]);
 
   useEffect(() => {
     console.log("component is re rendered");
@@ -18,15 +20,23 @@ const Body = () => {
     try {
       setIsLoading(true); //Start loading
       const data = await fetch(
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=30.76879019999999&lng=76.5753719&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=31.3127353&lng=75.59125399999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
       );
       const json = await data.json();
+
+      const specialCusinesData =
+      json?.data?.cards?.[0]?.card?.card?.imageGridCards?.info || [];
+    
+
       const resData =
-        json?.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle
+        json?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants || [];
+          setMenuCategories(specialCusinesData);
       setRestaurants(resData);
       setAllRestaurants(resData); //Save unfiltered restaurants
       setIsLoading(false); //End loading
+
+     
     } catch (error) {
       console.error("Error fetching data:", error);
       setError("Failed to fetch restaurants. Please try again.");
@@ -36,6 +46,7 @@ const Body = () => {
 
   const handleSearch = () => {
     const filteredList = restaurants.filter((restaurant) => {
+      // Convert both searchText and restaurant name to lowercase
       return restaurant.info.name
         .toLowerCase()
         .includes(searchText.toLowerCase());
@@ -66,8 +77,8 @@ const Body = () => {
         <input
           type="text"
           onChange={(e) => {
-            const searchTextValue = e.target.value;
-            setSearchText(searchTextValue);
+            const searchText = e.target.value; // Store search text in state
+            setSearchText(searchText);
           }}
         />
         <button className="btn-search" onClick={handleSearch}>
@@ -80,7 +91,20 @@ const Body = () => {
         </button>
       </div>
 
+      {/* Whats in your mind */}
       <div className="res-container">
+        <h1>Whats on your mind</h1>
+        {menuCategories.length > 0 ? (
+          menuCategories.map((info, index) => <ItemCategories
+          key={index}
+          name={info.action.text}
+           />)
+        ) : (
+          <div>No menu found.</div>
+        )}
+      </div>
+      <div className="res-container">
+        {/* <h2>Top Restaurants</h2> */}
         {restaurants.length > 0 ? (
           restaurants.map((restaurant, index) => (
             <RestaurantCard
