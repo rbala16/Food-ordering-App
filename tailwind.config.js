@@ -6,7 +6,9 @@ module.exports = {
     './src/**/*.css',  // For any CSS files inside src folder
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage:{"background-image": "url('/src/assets/images/background-img.jpg')"}
+    },
   },
   plugins: [],
 }
