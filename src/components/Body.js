@@ -25,19 +25,17 @@ const Body = () => {
       const json = await data.json();
 
       const ItemCategoriesData =
-      json?.data?.cards?.[0]?.card?.card?.imageGridCards?.info || [];
-    // console.log(specialCusinesData)
+        json?.data?.cards?.[0]?.card?.card?.imageGridCards?.info || [];
+      // console.log(specialCusinesData)
 
       const resData =
         json?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants || [];
-          console.log(resData)
-          setMenuCategories(ItemCategoriesData);
+      console.log(resData);
+      setMenuCategories(ItemCategoriesData);
       setRestaurants(resData);
       setAllRestaurants(resData); //Save unfiltered restaurants
       setIsLoading(false); //End loading
-
-     
     } catch (error) {
       console.error("Error fetching data:", error);
       setError("Failed to fetch restaurants. Please try again.");
@@ -97,12 +95,12 @@ const Body = () => {
         <h1>Whats on your mind</h1>
         {menuCategories.length > 0 ? (
           menuCategories.map((info, index) => (
-          <ItemCategories
-          key={index}
-          name={info.action.text}
-          ImageId={info.imageId}
-          link={info.action.link}
-           />
+            <ItemCategories
+              key={index}
+              name={info.action.text}
+              ImageId={info.imageId}
+              link={info.action.link}
+            />
           ))
         ) : (
           <div>No menu found.</div>
