@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+{}
 module.exports = {
   content: [
     './public/**/*.html',   // For HTML files in the public folder

@@ -2,16 +2,18 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import HeroSection from "./components/HeroSection";
-import Body from "./components/Body";
+
 import Contact from "./components/Contact";
 import About from "./components/About";
 import Error from "./components/Error";
 import Navbar from "./components/Navbar";
+import RestaurantList from "./components/RestaurantList";
 
 const App = () => {
   return (
     <div>
       <Navbar />
+      
       <Outlet />
     </div>
   );
@@ -25,11 +27,11 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <HeroSection />,
+        element: <><HeroSection /><RestaurantList/></>,
       },
       {
-        path: "/body",
-        element: <Body />,
+        path: "/restaurantlist",
+        element: <RestaurantList />,
       },
       {
         path: "about",

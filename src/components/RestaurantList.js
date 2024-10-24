@@ -1,15 +1,52 @@
 import React, { useState, useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
-import ItemCategories from "./ItemCategories";
+import Slider from "react-slick";
+import MenuSlider from "./MenuSlider";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-const Body = () => {
+const RestaurantList = () => {
   const [restaurants, setRestaurants] = useState([]); //Restaurant to display
   const [allRestaurants, setAllRestaurants] = useState([]); // all Restaurants
   const [searchText, setSearchText] = useState(""); //Track search
   const [isLoading, setIsLoading] = useState(true); // Track loading state
   const [error, setError] = useState(null); // Track errors
   const [menuCategories, setMenuCategories] = useState([]);
+
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    autoplay: true, // Automatically slide to next project
+    autoplaySpeed: 3000, // 3 seconds per slide
+    slidesToShow: 6,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
 
   useEffect(() => {
     console.log("component is re rendered");
@@ -20,7 +57,7 @@ const Body = () => {
     try {
       setIsLoading(true); //Start loading
       const data = await fetch(
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=31.3127353&lng=75.59125399999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=30.76879019999999&lng=76.5753719&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
       );
       const json = await data.json();
 
@@ -94,14 +131,15 @@ const Body = () => {
       <div className="res-container">
         <h1>Whats on your mind</h1>
         {menuCategories.length > 0 ? (
-          menuCategories.map((info, index) => (
-            <ItemCategories
-              key={index}
-              name={info.action.text}
-              ImageId={info.imageId}
-              link={info.action.link}
-            />
-          ))
+          <Slider {...sliderSettings} className="space-x-4">
+            {menuCategories.map((info, index) => (
+              <MenuSlider
+                key={index}
+                ImageId={info.imageId}
+                link={info.action.link}
+              />
+            ))}
+          </Slider>
         ) : (
           <div>No menu found.</div>
         )}
@@ -127,4 +165,4 @@ const Body = () => {
   );
 };
 
-export default Body;
+export default RestaurantList;

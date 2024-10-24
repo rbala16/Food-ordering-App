@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 .primary-color {
   @apply text-transparent bg-clip-text bg-gradient-to-l from-orange-800 to-orange-500 inline-block;
 }
@@ -34,6 +35,20 @@ body {
   }
 
   .hero-section {
-    min-height: 100vh;
+    min-height: 90vh;
   }
+
+  /* For slick dots */
+.slick-dots li button:before {
+  color: #f97316; /* Orange-500 */
+}
+.slick-dots li.slick-active button:before {
+  color: #9a3412; /* Orange-800 */
+}
+
+/* For slick arrows */
+.slick-prev,
+.slick-next {
+  color: #f97316; /* Orange-500 */
+}
   
