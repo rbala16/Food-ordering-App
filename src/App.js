@@ -8,6 +8,7 @@ import About from "./components/About";
 import Error from "./components/Error";
 import Navbar from "./components/Navbar";
 import RestaurantList from "./components/RestaurantList";
+import Footer from "./components/footer";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
       <Navbar />
 
       <Outlet />
+      <Footer/>
     </div>
   );
 };
