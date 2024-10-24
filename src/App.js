@@ -13,7 +13,7 @@ const App = () => {
   return (
     <div>
       <Navbar />
-      
+
       <Outlet />
     </div>
   );
@@ -23,11 +23,16 @@ const appRouter = createBrowserRouter([
   {
     path: "",
     element: <App />,
-    errorElement:<Error/>,
+    errorElement: <Error />,
     children: [
       {
         path: "/",
-        element: <><HeroSection /><RestaurantList/></>,
+        element: (
+          <>
+            <HeroSection />
+            <RestaurantList />
+          </>
+        ),
       },
       {
         path: "/restaurantlist",

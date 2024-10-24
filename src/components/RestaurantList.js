@@ -5,6 +5,7 @@ import Slider from "react-slick";
 import MenuSlider from "./MenuSlider";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import {  RES_INFO_URL } from "../utils/constants";
 
 const RestaurantList = () => {
   const [restaurants, setRestaurants] = useState([]); //Restaurant to display
@@ -13,7 +14,7 @@ const RestaurantList = () => {
   const [isLoading, setIsLoading] = useState(true); // Track loading state
   const [error, setError] = useState(null); // Track errors
   const [menuCategories, setMenuCategories] = useState([]);
-
+  // Slider settings
   const sliderSettings = {
     dots: true,
     infinite: true,
@@ -46,27 +47,25 @@ const RestaurantList = () => {
         },
       },
     ],
-  };
-
+  }
+  //useEffect
   useEffect(() => {
     console.log("component is re rendered");
     fetchData();
   }, []);
-
+  //fetch Restaurant info
   const fetchData = async () => {
     try {
       setIsLoading(true); //Start loading
-      const data = await fetch(
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=30.76879019999999&lng=76.5753719&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-      );
+      const data = await fetch(RES_INFO_URL);
       const json = await data.json();
-
+    // Menu Item 
       const ItemCategoriesData =
         json?.data?.cards?.[0]?.card?.card?.imageGridCards?.info || [];
       // console.log(specialCusinesData)
-
+   //Restraunt Data
       const resData =
-        json?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle
+        json?.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants || [];
       console.log(resData);
       setMenuCategories(ItemCategoriesData);
@@ -127,9 +126,9 @@ const RestaurantList = () => {
         </button>
       </div>
 
-      {/* Whats in your mind */}
-      <div className="res-container">
-        <h1>Whats on your mind</h1>
+      {/* Menu Slider */}
+      <div className="p-8 m-5">
+        <h1 className="text-3xl font-bold mb-6">Order your favourite food!!</h1>
         {menuCategories.length > 0 ? (
           <Slider {...sliderSettings} className="space-x-4">
             {menuCategories.map((info, index) => (
@@ -141,25 +140,32 @@ const RestaurantList = () => {
             ))}
           </Slider>
         ) : (
-          <div>No menu found.</div>
+          <div className="text-lg text-gray-500">No menu found.</div>
         )}
       </div>
-      <div className="res-container">
-        {/* <h2>Top Restaurants</h2> */}
+      
+      {/* Restaurant List */}
+      <div className="mt-20 p-20">
+      <h1 className="text-3xl font-semibold mb-6 ">Restaurants with online food delivery in your area</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {restaurants.length > 0 ? (
+
           restaurants.map((restaurant, index) => (
             <RestaurantCard
               key={index}
               name={restaurant.info.name}
               cuisines={restaurant.info.cuisines.join(" , ")}
               deliveryTime={restaurant.info.sla.slaString}
-              avgRating={`${restaurant.info.avgRating}stars`}
+              avgRating={`${restaurant.info.avgRating}⭐`}
               cloudinaryImageId={restaurant.info.cloudinaryImageId}
+              offer={restaurant.info.costForTwo}
+              link={restaurant.cta.link}
             />
           ))
         ) : (
           <div>No restaurants found.</div>
         )}
+        </div>
       </div>
     </div>
   );

@@ -14,7 +14,7 @@ const Navbar = () => {
     setShowNav(!showNav);
   };
   return (
-    <div className="text-black h-[80px] max-w-[1600px] mx-auto flex justify-between items-center">
+    <div className="text-black h-[80px] max-w-[1600px] mx-auto flex justify-between items-center ">
       <h1 className="text-xl md:text-3xl font-bold primary-color ml-4">
         BalaFoodClub
       </h1>
