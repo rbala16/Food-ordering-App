@@ -4,7 +4,7 @@ import { useTypewriter, Cursor } from "react-simple-typewriter";
 
 const HeroSection = () => {
     const [text] = useTypewriter({
-        words: ["Fresh Meals", "Free Delivery over Rs.300", " Delivery within 20 min"],
+        words: ["Fresh Meals", "Free Delivery over Rs.300", " Delivery within 30 min"],
         loop: true,
         typeSpeed: 20,
         deleteSpeed: 10,

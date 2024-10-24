@@ -98,6 +98,28 @@ const RestaurantList = () => {
     console.log("restaurant after filter", restaurants);
   };
 
+  const handleFastDelivery = ()=>{
+    const filteredList = restaurants.filter((restaurant)=>{
+      const slaString = restaurant.info.sla.slaString;
+      //Extract the first number
+      const minTime = parseInt(slaString);
+      return minTime >= 30 && minTime < 35;
+  
+    });
+    console.log(filteredList);
+    setRestaurants(filteredList)
+  }
+
+  const handleLessPrice=()=>{
+    const filteredList = restaurants.filter((restaurant)=>{
+     const offerPrice = restaurant.info.costForTwo;
+     const price = parseInt(offerPrice.replace(/[^0-9]/g, '')); /// This will extract '300' from 'Rs 300 for two'
+
+     return price <=300
+    })
+    setRestaurants(filteredList)
+  }
+
   if (isLoading) {
     return <Shimmer />;
   }
@@ -147,6 +169,11 @@ const RestaurantList = () => {
       {/* Restaurant List */}
       <div className="mt-20 p-20">
       <h1 className="text-3xl font-semibold mb-6 ">Restaurants with online food delivery in your area</h1>
+      <button className=" p-1 border-2 bg-white rounded-2xl m-4" onClick={handleTopRatedRestaurants} >Rating 4.0+</button>
+      <button className=" p-1 border-2 bg-white rounded-2xl m-4" onClick={handleLessPrice} >Less than Rs.300</button>
+      <button className=" p-1 border-2 bg-white rounded-2xl m-4" onClick={handleFastDelivery} >Fast Delivery</button>
+      <button className=" p-1 border-2 bg-white rounded-2xl m-4" onClick={handleFastDelivery} >Fast Delivery</button>
+      <button className=" p-1 border-2 bg-white rounded-2xl m-4" onClick={handleFastDelivery} >Fast Delivery</button>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {restaurants.length > 0 ? (
 
