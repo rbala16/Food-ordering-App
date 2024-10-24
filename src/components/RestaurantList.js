@@ -65,7 +65,7 @@ const RestaurantList = () => {
       // console.log(specialCusinesData)
    //Restraunt Data
       const resData =
-        json?.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle
+        json?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants || [];
       console.log(resData);
       setMenuCategories(ItemCategoriesData);
@@ -187,6 +187,9 @@ const RestaurantList = () => {
               cloudinaryImageId={restaurant.info.cloudinaryImageId}
               offer={restaurant.info.costForTwo}
               link={restaurant.cta.link}
+              address={`${restaurant.info.locality}, ${restaurant.info.areaName}`}
+              discount={`${restaurant.info.aggregatedDiscountInfoV3.header} ${restaurant.info.aggregatedDiscountInfoV3.subHeader}`}
+              avaiability={restaurant.info.availability.nextCloseTime}
             />
           ))
         ) : (
