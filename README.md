@@ -9,3 +9,9 @@ npm install --save-dev parcel
     let [restaurants] = useState(mock_restaurants);
 
     Shimmer=Skeleton
+
+    rm -rf .parcel-cache
+
+    npm cache clean --force
+    npm update parcel
+

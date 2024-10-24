@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
-import HeroSection from "./components/HeroSection";
+import HeroSection from "./components/HeroSection/HeroSection";
 
 import Contact from "./components/Contact";
 import About from "./components/About";
@@ -10,13 +10,14 @@ import Navbar from "./components/Navbar";
 import RestaurantList from "./components/RestaurantList";
 import Footer from "./components/footer";
 
+
 const App = () => {
   return (
     <div>
       <Navbar />
 
       <Outlet />
-      <Footer/>
+      <Footer />
     </div>
   );
 };
@@ -37,7 +38,7 @@ const appRouter = createBrowserRouter([
         ),
       },
       {
-        path: "/restaurantlist",
+        path: "/restaurants",
         element: <RestaurantList />,
       },
       {
