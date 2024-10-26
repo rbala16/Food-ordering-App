@@ -7,6 +7,7 @@ import {
 import { MdAccountCircle } from "react-icons/md";
 import { TiHomeOutline } from "react-icons/ti";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [showNav, setShowNav] = useState(false);
@@ -29,16 +30,16 @@ const Navbar = () => {
 
       <ul className="hidden md:flex text-xl">
         <li className="p-5 nav-link ">
-          <a href="#">Home</a>
+          <Link to="/">Home</Link>
         </li>
         <li className="p-5 nav-link">
-          <a href="#">About</a>
+          <Link to="/about">About</Link>
         </li>
         <li className="p-5 nav-link">
-          <a href="#">Contact</a>
+          <Link to="/contact">Contact</Link>
         </li>
         <li className="p-5 nav-link">
-          <a href="#">Menu</a>
+          <Link to="#">Menu</Link>
         </li>
       </ul>
       <a className="text-orange-700 text-3xl p-5 nav-link">
@@ -60,18 +61,18 @@ const Navbar = () => {
         }
       >
         <ul className="p-6 text-xl w-full bg-primary-color rounded-lg text-white">
-          <li className="p-5 nav-link">
-            <a href="#">Home</a>
-          </li>
-          <li className="p-5 nav-link">
-            <a href="#">About</a>
-          </li>
-          <li className="p-5 nav-link">
-            <a href="#">Contact</a>
-          </li>
-          <li className="p-5 nav-link">
-            <a href="#">Menu</a>
-          </li>
+        <li className="p-5 nav-link ">
+          <Link to="/">Home</Link>
+        </li>
+        <li className="p-5 nav-link">
+          <Link to="/about">About</Link>
+        </li>
+        <li className="p-5 nav-link">
+          <Link to="/contact">Contact</Link>
+        </li>
+        <li className="p-5 nav-link">
+          <Link to="#">Menu</Link>
+        </li>
           <div className="flex-gap-4">
             <button className="rounded-lg h-12 w-28  bg-primary-color shadow-xl nav-link">
               <span relative="z-10">Sign In</span>
