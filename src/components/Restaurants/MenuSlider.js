@@ -1,6 +1,6 @@
 import React from "react";
 
-import { RES_IMG_URL } from "../utils/constants";
+import { RES_IMG_URL } from "../../utils/constants";
 
 const MenuSlider = ({ ImageId, link,  }) => {
   return (

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
-import Shimmer from "./Shimmer";
+import Shimmer from "../Shimmer";
 import Slider from "react-slick";
 import MenuSlider from "./MenuSlider";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { RES_INFO_URL } from "../utils/constants";
+import { RES_INFO_URL } from "../../utils/constants";
 import { useLocation } from "react-router-dom"; // For getting URL parameters
 
 const RestaurantList = () => {
@@ -91,8 +91,12 @@ const RestaurantList = () => {
       // console.log(specialCusinesData)
       //Restraunt Data
       const resData =
-        json?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants || [];
+      json?.data?.cards[1].card?.card?.gridElements?.infoWithStyle?.restaurants ? json?.data?.cards[1].card?.card?.gridElements?.infoWithStyle?.restaurants
+      : json?.data?.cards[2].card?.card?.gridElements?.infoWithStyle?.restaurants ? json?.data?.cards[2].card?.card?.gridElements?.infoWithStyle?.restaurants
+          : json?.data?.cards[3].card?.card?.gridElements?.infoWithStyle?.restaurants ? json?.data?.cards[3].card?.card?.gridElements?.infoWithStyle?.restaurants
+              : json?.data?.cards[4].card?.card?.gridElements?.infoWithStyle?.restaurants ? json?.data?.cards[4].card?.card?.gridElements?.infoWithStyle?.restaurants
+                  : [];
+      // json?.data?.cards[3].card?.card?.gridElements?.infoWithStyle?.restaurants || [];
       console.log(resData);
       setMenuCategories(ItemCategoriesData);
       setRestaurants(resData);
@@ -117,7 +121,7 @@ const RestaurantList = () => {
 
   const handleTopRatedRestaurants = () => {
     const filteredList = restaurants.filter((restaurant) => {
-      return restaurant.info.avgRating >= 4.4;
+      return restaurant.info.avgRating >= 4.0;
     });
     console.log("filteredList", filteredList);
     setRestaurants(filteredList);
@@ -225,7 +229,7 @@ const RestaurantList = () => {
                 offer={restaurant.info.costForTwo}
                 link={restaurant.cta.link}
                 address={`${restaurant.info.locality}, ${restaurant.info.areaName}`}
-                discount={`${restaurant.info.aggregatedDiscountInfoV3.header} ${restaurant.info.aggregatedDiscountInfoV3.subHeader}`}
+                // discount={`${restaurant.info.aggregatedDiscountInfoV3.header} ${restaurant.info.aggregatedDiscountInfoV3.subHeader}`}
                 avaiability={restaurant.info.availability.nextCloseTime}
               />
             ))
