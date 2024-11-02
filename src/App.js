@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import HeroSection from "./components/HeroSection/HeroSection";
@@ -9,7 +9,8 @@ import Error from "./components/Error/Error";
 import Navbar from "./components/Navbar/Navbar";
 import RestaurantList from "./components/Restaurants/RestaurantList";
 import Footer from "./components/Footer/Footer";
-
+//only when grocery is invoke ,callback function called
+const Grocery = lazy(()=> import("./components/Grocery/Grocery") )//lazy function
 const App = () => {
   return (
     <div>
@@ -36,7 +37,7 @@ const appRouter = createBrowserRouter([
         ),
       },
       {
-        path: "/restaurants",
+        path: "restaurants",
         element: <RestaurantList />,
       },
       {
@@ -46,6 +47,14 @@ const appRouter = createBrowserRouter([
       {
         path: "contact",
         element: <Contact />,
+      },
+      {
+        path: "restaurantmenu/:resId",
+        element: <Contact />,
+      },
+      {
+        path: "grocery",
+        element: <Suspense fallback={<div>Loading...</div>}><Grocery businessName= "Bala Grocery Service" /></Suspense>,//replace with loading untoll grocery is loading
       },
     ],
   },

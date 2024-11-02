@@ -15,3 +15,4 @@ npm install --save-dev parcel
     npm cache clean --force
     npm update parcel
 
+Lazy loading - to improve performance (laod when we actually need this )

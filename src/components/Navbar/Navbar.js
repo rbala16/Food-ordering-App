@@ -41,6 +41,9 @@ const Navbar = () => {
         <li className="p-5 nav-link">
           <Link to="#">Menu</Link>
         </li>
+        <li className="p-5 nav-link">
+          <Link to="/grocery">Grocery</Link>
+        </li>
       </ul>
       <a className="text-orange-700 text-3xl p-5 nav-link">
         <AiOutlineShoppingCart />

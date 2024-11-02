@@ -28,9 +28,25 @@ body {
   transition: color 0.3s ease;  /* Updated */
 }
 
+
 .hero-section {
-  min-height: 90vh;
-}
+  @apply min-h-screen;
+
+  @screen sm {
+    min-height: 50vh;
+  }
+  
+  @screen md {
+    min-height: 70vh;
+  }
+  
+  @screen lg {
+    min-height: 90vh;
+  }
+} 
+
+
+
 
 /* For slick dots */
 .slick-dots li button:before {

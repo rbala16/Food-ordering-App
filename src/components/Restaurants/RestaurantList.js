@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { RES_INFO_URL } from "../../utils/constants";
 import { useLocation } from "react-router-dom"; // For getting URL parameters
+import { Link } from "react-router-dom";
 
 const RestaurantList = () => {
   const [restaurants, setRestaurants] = useState([]); //Restaurant to display
@@ -178,7 +179,7 @@ const RestaurantList = () => {
       </div>
 
       {/* Restaurant List */}
-      <div className="mt-20 px-20">
+      <div className="mt-20 lg:px-20 md:px-2 sm:px-2">
         <h1 className="text-3xl font-semibold mb-6 ">
           Restaurants with online food delivery in your area
         </h1>
@@ -219,6 +220,7 @@ const RestaurantList = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {restaurants.length > 0 ? (
             restaurants.map((restaurant, index) => (
+              <Link to={"/restaurantmenu " + restaurant.info.id}>
               <RestaurantCard
                 key={index}
                 name={restaurant.info.name}
@@ -232,6 +234,7 @@ const RestaurantList = () => {
                 // discount={`${restaurant.info.aggregatedDiscountInfoV3.header} ${restaurant.info.aggregatedDiscountInfoV3.subHeader}`}
                 avaiability={restaurant.info.availability.nextCloseTime}
               />
+              </Link>
             ))
           ) : (
             <div>No restaurants found.</div>

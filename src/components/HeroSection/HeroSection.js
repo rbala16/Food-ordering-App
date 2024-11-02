@@ -29,7 +29,7 @@ const HeroSection = () => {
 
   return (
     <div className="max-w-[1600px] mx-auto gap-4">
-      <div className="hero-section bg-background-image bg-cover bg-center w-full flex flex-col justify-center items-center text-center text-white p-4 min-h-[60vh]">
+      <div className="hero-section  bg-background-image bg-cover bg-center w-full flex flex-col justify-center items-center text-center text-white p-4 min-h-[60vh]">
         <h1 className="text-4xl md:text-6xl font-bold mb-4">
           Welcome to BalaFoodClub
         </h1>
