@@ -8,6 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { RES_INFO_URL } from "../../utils/constants";
 import { useLocation } from "react-router-dom"; // For getting URL parameters
 import { Link } from "react-router-dom";
+import withPromotedLabel from "./withPromotedLabel";
 
 const RestaurantList = () => {
   const [restaurants, setRestaurants] = useState([]); //Restaurant to display
@@ -157,7 +158,9 @@ const RestaurantList = () => {
   if (error) {
     return <div>{error}</div>; // Display error message if fetch fails
   }
-
+//Wrap RestaurantCard with withPromotedLabel HOC
+//HOC => accepts RestaurantCard as input and returns enhancedRestaurantCard 
+  const EnhancedRestaurantCard = withPromotedLabel(RestaurantCard);
   return (
     <div className="body">
       {/* Menu Slider */}
@@ -221,9 +224,10 @@ const RestaurantList = () => {
           {restaurants.length > 0 ? (
             restaurants.map((restaurant, index) => (
               <Link to={"restaurantmenu/" + restaurant.info.id}>
-              <RestaurantCard
+              <EnhancedRestaurantCard
                 key={index}
                 name={restaurant.info.name}
+                promoted = {restaurant.info.promoted}
                 cuisines={restaurant.info.cuisines.join(" , ")}
                 deliveryTime={restaurant.info.sla.slaString}
                 avgRating={`${restaurant.info.avgRating}⭐`}
