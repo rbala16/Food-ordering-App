@@ -8,13 +8,13 @@ const RestrauntCard = ({
   deliveryTime,
   cloudinaryImageId,
   offer,
-  link,
+  
   address,
   discount,
   avaiability,
 }) => {
   return (
-    <a href={link} target="_blank" rel="noopener noreferrer">
+
       <div className="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-xl duration-300">
         <div className="relative shadow-lg">
           <img
@@ -43,7 +43,7 @@ const RestrauntCard = ({
           <p className="text-gray-600 text-sm primary-color">{avaiability}</p>
         </div>
       </div>
-    </a>
+    
   );
 };
 

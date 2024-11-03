@@ -9,6 +9,7 @@ import Error from "./components/Error/Error";
 import Navbar from "./components/Navbar/Navbar";
 import RestaurantList from "./components/Restaurants/RestaurantList";
 import Footer from "./components/Footer/Footer";
+import RestaurantMenu from "./components/Restaurants/RestaurantMenu";
 //only when grocery is invoke ,callback function called
 const Grocery = lazy(()=> import("./components/Grocery/Grocery") )//lazy function
 const App = () => {
@@ -50,7 +51,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "restaurantmenu/:resId",
-        element: <Contact />,
+        element: <RestaurantMenu/>,
       },
       {
         path: "grocery",
