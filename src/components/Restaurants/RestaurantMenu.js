@@ -6,9 +6,9 @@ import RestaurantMenuCard from "./RestaurantMenuCard";
 import { TfiArrowCircleDown,TfiArrowCircleUp } from "react-icons/tfi";
 
 const RestaurantMenu = () => {
-  const { resId } = useParams();
+  const { resId } = useParams(); //resId is extracted from the URL using useParams
   const [resMenu, setResMenu] = useState([]);
-  const [activeTitle, setActiveTitle] = useState(null); // Track active title
+  const [itemShouldShow, setItemShouldShow] = useState(true); 
 
   useEffect(() => {
     fetchResMenu();
@@ -21,9 +21,9 @@ const RestaurantMenu = () => {
     setResMenu(resMenuCards || []);
   };
 
-  const toggleItems = (title) => {
-    setActiveTitle((prevTitle) => (prevTitle === title ? null : title));
-  };
+  const handleClick = () => {
+    setItemShouldShow(!itemShouldShow)
+}
 
   return (
     <div className="w-3/4 mx-auto mt-6 space-y-4">
@@ -33,16 +33,16 @@ const RestaurantMenu = () => {
             <div key={menu.card.card.title} className="border-b border-gray-200 shadow pb-4 ">
               <h3
                 className="flex justify-between items-center cursor-pointer text-lg font-semibold text-gray-800 hover:text-orange-500"
-                onClick={() => toggleItems(menu.card.card.title)}
+                onClick={handleClick}
               >
                 {menu.card.card.title} 
-                {activeTitle === menu.card.card.title ? (
+                {itemShouldShow? (
                   <TfiArrowCircleUp className="text-xl" />
                 ) : (
                   <TfiArrowCircleDown className="text-xl" />
                 )}
               </h3>
-              {activeTitle === menu.card.card.title &&
+              {itemShouldShow &&
                 menu.card.card.itemCards &&
                 menu.card.card.itemCards.map((item) => (
                   <RestaurantMenuCard

@@ -5,17 +5,18 @@ import Slider from "react-slick";
 import MenuSlider from "./MenuSlider";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { RES_INFO_URL } from "../../utils/constants";
+import { mock_restaurants, RES_INFO_URL } from "../../utils/constants";
 import { useLocation } from "react-router-dom"; // For getting URL parameters
 import { Link } from "react-router-dom";
 import withPromotedLabel from "./withPromotedLabel";
+import useRestaurant from "../../utils/useRestaurant";
 
 const RestaurantList = () => {
   const [restaurants, setRestaurants] = useState([]); //Restaurant to display
   const [allRestaurants, setAllRestaurants] = useState([]); // all Restaurants
   const [isLoading, setIsLoading] = useState(true); // Track loading state
   const [error, setError] = useState(null); // Track errors
-  const [menuCategories, setMenuCategories] = useState([]);
+  // const [menuCategories, setMenuCategories] = useState([]);
   const location = useLocation(); // To access URL parameters
 
   // Fetch search query from URL
@@ -85,22 +86,15 @@ const RestaurantList = () => {
   const fetchData = async () => {
     try {
       setIsLoading(true); //Start loading
-      const data = await fetch(RES_INFO_URL);
-      const json = await data.json();
+      const resData = await useRestaurant();
+      console.log("resData from body", resData);
       // Menu Item
-      const ItemCategoriesData =
-        json?.data?.cards?.[0]?.card?.card?.imageGridCards?.info || [];
+      // const ItemCategoriesData =
+      //   json?.data?.cards?.[0]?.card?.card?.imageGridCards?.info || [];
       // console.log(specialCusinesData)
       //Restraunt Data
-      const resData =
-      json?.data?.cards[1].card?.card?.gridElements?.infoWithStyle?.restaurants ? json?.data?.cards[1].card?.card?.gridElements?.infoWithStyle?.restaurants
-      : json?.data?.cards[2].card?.card?.gridElements?.infoWithStyle?.restaurants ? json?.data?.cards[2].card?.card?.gridElements?.infoWithStyle?.restaurants
-          : json?.data?.cards[3].card?.card?.gridElements?.infoWithStyle?.restaurants ? json?.data?.cards[3].card?.card?.gridElements?.infoWithStyle?.restaurants
-              : json?.data?.cards[4].card?.card?.gridElements?.infoWithStyle?.restaurants ? json?.data?.cards[4].card?.card?.gridElements?.infoWithStyle?.restaurants
-                  : [];
-      // json?.data?.cards[3].card?.card?.gridElements?.infoWithStyle?.restaurants || [];
-      console.log(resData);
-      setMenuCategories(ItemCategoriesData);
+      
+      // setMenuCategories(ItemCategoriesData);
       setRestaurants(resData);
       setAllRestaurants(resData); //Save unfiltered restaurants
       setIsLoading(false); //End loading
@@ -164,7 +158,7 @@ const RestaurantList = () => {
   return (
     <div className="body">
       {/* Menu Slider */}
-      <div className="p-8 m-5">
+      {/* <div className="p-8 m-5">
         <h1 className="text-3xl font-bold mb-6">Order your favourite food!!</h1>
         {menuCategories.length > 0 ? (
           <Slider {...sliderSettings} className="space-x-4">
@@ -179,7 +173,7 @@ const RestaurantList = () => {
         ) : (
           <div className="text-lg text-gray-500">No menu found.</div>
         )}
-      </div>
+      </div> */}
 
       {/* Restaurant List */}
       <div className="mt-20 lg:px-20 md:px-2 sm:px-2">
