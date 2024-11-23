@@ -10,14 +10,24 @@ import Navbar from "./components/Navbar/Navbar";
 import RestaurantList from "./components/Restaurants/RestaurantList";
 import Footer from "./components/Footer/Footer";
 import RestaurantMenu from "./components/Restaurants/RestaurantMenu";
+import { ThemeProvider } from "./context/ThemeContext";
+import { Provider } from "react-redux";
+import appStore from "./app/store";
+
 //only when grocery is invoke ,callback function called
 const Grocery = lazy(()=> import("./components/Grocery/Grocery") )//lazy function
 const App = () => {
   return (
+    
     <div>
+      <Provider store={appStore}>
+      <ThemeProvider>
+        
       <Navbar />
       <Outlet />
       <Footer />
+      </ThemeProvider>
+      </Provider>
     </div>
   );
 };

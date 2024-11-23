@@ -8,14 +8,19 @@ import { MdAccountCircle } from "react-icons/md";
 import { TiHomeOutline } from "react-icons/ti";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useTheme } from "../../context/ThemeContext";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [showNav, setShowNav] = useState(false);
+  const { theme, toggleTheme } = useTheme();
   const handleShowNav = () => {
     setShowNav(!showNav);
   };
+
+  const cardItems = useSelector((store)=>store.cart.items)
   return (
-    <div className="text-black h-[80px] max-w-[1600px] mx-auto flex justify-between items-center ">
+    <div className={`text-black h-[80px] max-w-[1600px] mx-auto flex justify-between items-center ${theme === 'light' ? 'bg-white text-black' : 'bg-gray-800 text-white'}`}>
       <h1 className="text-xl md:text-3xl font-bold primary-color ml-4">
         BalaFoodClub
       </h1>
@@ -26,6 +31,9 @@ const Navbar = () => {
         {/* <button className="rounded-lg h-8 w-20 border border-orange-500 bg-primary-color text-white shadow-2xl">
           Signup
         </button> */}
+ <button onClick={toggleTheme} className="rounded-lg h-8 w-20 border border-orange-500 bg-primary-color text-white shadow-2xl">
+ Switch to {theme === 'light' ? 'Dark' : 'Light'} Mode
+        </button>
       </div>
 
       <ul className="hidden md:flex text-xl">
@@ -45,8 +53,8 @@ const Navbar = () => {
           <Link to="/grocery">Grocery</Link>
         </li>
       </ul>
-      <a className="text-orange-700 text-3xl p-5 nav-link">
-        <AiOutlineShoppingCart />
+      <a className="text-orange-700 text-3xl p-5 nav-link flex">
+        <AiOutlineShoppingCart />{cardItems.length}
       </a>
       <div
         onClick={handleShowNav}
