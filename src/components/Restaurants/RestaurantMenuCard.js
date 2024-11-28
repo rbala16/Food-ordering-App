@@ -2,6 +2,7 @@ import React from "react";
 import { RES_MENU_IMG_URL } from "../../utils/constants";
 import { useDispatch } from "react-redux";
 import {addItem} from '../../features/cardSlice';
+import { useTheme } from "../../context/ThemeContext";
 
 const RestaurantMenuCard = ({ name, price, description, rating, imageId ,ratingCount}) => {
 
@@ -11,8 +12,10 @@ const RestaurantMenuCard = ({ name, price, description, rating, imageId ,ratingC
       // dispatch action
       dispatch(addItem("Pizza"))
   }
+  const {theme} = useTheme();
+  
   return (
-    <div className="sm:py-2 bg-white flex flex-col md:flex-row items-center md:items-center border-b-2 border-gray-200 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-xl duration-300">
+    <div className={`sm:py-2 ${ theme === "light"? "bg-white":"bg-gray-800"} flex flex-col md:flex-row items-center md:items-center border-b-2 border-gray-200 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-xl duration-300`}>
       <div className="w-1/4 relative">
         <img
           className="lg:w-full lg:h-full  sm:h-[200px] sm:max-w-[200px] object-cover rounded-l-lg"

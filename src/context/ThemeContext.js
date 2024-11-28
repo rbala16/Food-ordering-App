@@ -1,6 +1,6 @@
 import React,{ createContext,useContext,useState } from "react";
 
-//create theme context
+//create context for theme
 const ThemeContext = createContext();
 
 //Custom hook to access the theme context

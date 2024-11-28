@@ -1,5 +1,6 @@
 import React from "react";
 import { RES_IMG_URL } from "../../utils/constants";
+import { useTheme } from "../../context/ThemeContext";
 
 const RestrauntCard = ({
   name,
@@ -12,8 +13,10 @@ const RestrauntCard = ({
   discount,
   avaiability,
 }) => {
+  const {theme} = useTheme();
+
   return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-xl duration-300">
+    <div className={`${ theme === "light"? "bg-white":"bg-gray-800"} rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-xl duration-300`}>
       <div className="relative shadow-lg">
         <img
           className="w-full h-[200px] object-cover rounded"

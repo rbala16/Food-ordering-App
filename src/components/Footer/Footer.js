@@ -1,10 +1,13 @@
 import React from 'react'
 import { FaFacebookF, FaTwitter} from "react-icons/fa";
 import { FaSquareInstagram } from "react-icons/fa6";
+import { useTheme } from "../../context/ThemeContext"; 
 
 const Footer = () => {
+  const {theme} = useTheme();
+
     return (
-      <div className="bg-gray-800 text-white py-10 mt-10">
+      <div className={`${theme === "light" ? "bg-gray-800":"bg-gray-800 text-black"} text-white py-10 mt-10`}>
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
         
         {/* About & Contact Info */}

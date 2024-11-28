@@ -13,6 +13,7 @@ import RestaurantMenu from "./components/Restaurants/RestaurantMenu";
 import { ThemeProvider } from "./context/ThemeContext";
 import { Provider } from "react-redux";
 import appStore from "./app/store";
+import ThemeWrapper from "./components/ThemeWrapper";
 
 //only when grocery is invoke ,callback function called
 const Grocery = lazy(()=> import("./components/Grocery/Grocery") )//lazy function
@@ -22,10 +23,11 @@ const App = () => {
     <div>
       <Provider store={appStore}>
       <ThemeProvider>
-        
+        <ThemeWrapper>
       <Navbar />
       <Outlet />
       <Footer />
+      </ThemeWrapper>
       </ThemeProvider>
       </Provider>
     </div>

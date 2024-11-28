@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import withPromotedLabel from "./withPromotedLabel";
 import useRestaurant from "../../utils/useRestaurant";
 import useMenuCategories from "../../utils/useMenuCategories";
+import { useTheme } from "../../context/ThemeContext";
 
 const RestaurantList = () => {
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
@@ -26,7 +27,8 @@ const RestaurantList = () => {
   } = useMenuCategories();
 
   const location = useLocation(); // To access URL parameters
-
+  const theme = useTheme();
+  
   // Fetch search query from URL
   const searchParams = new URLSearchParams(location.search);
   const searchQuery = searchParams.get("search") || "";
