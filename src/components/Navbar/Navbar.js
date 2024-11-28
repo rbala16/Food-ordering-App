@@ -19,6 +19,7 @@ const Navbar = () => {
   };
 
   const cardItems = useSelector((store)=>store.cart.items)
+  
   return (
     <div className={`text-black h-[80px] max-w-[1600px] mx-auto flex justify-between items-center ${theme === 'light' ? 'bg-white text-black' : 'bg-gray-800 text-white'}`}>
       <h1 className="text-xl md:text-3xl font-bold primary-color ml-4">

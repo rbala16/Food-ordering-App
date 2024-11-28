@@ -10,13 +10,16 @@ import { useLocation } from "react-router-dom"; // For getting URL parameters
 import { Link } from "react-router-dom";
 import withPromotedLabel from "./withPromotedLabel";
 import useRestaurant from "../../utils/useRestaurant";
+import useMenuCategories from "../../utils/useMenuCategories";
 
 const RestaurantList = () => {
   const [restaurants, setRestaurants] = useState([]); //Restaurant to display
   const [allRestaurants, setAllRestaurants] = useState([]); // all Restaurants
-  const [isLoading, setIsLoading] = useState(true); // Track loading state
-  const [error, setError] = useState(null); // Track errors
+  // const [isLoading, setIsLoading] = useState(true); // Track loading state
+  // const [error, setError] = useState(null); // Track errors
   // const [menuCategories, setMenuCategories] = useState([]);
+  // Fetch restaurants using the custom hook
+  const { itemCategories, isLoading, error } = useRestaurants();
   const location = useLocation(); // To access URL parameters
 
   // Fetch search query from URL
@@ -85,16 +88,15 @@ const RestaurantList = () => {
   //fetch Restaurant info
   const fetchData = async () => {
     try {
-      setIsLoading(true); //Start loading
+      // setIsLoading(true); //Start loading
       const resData = await useRestaurant();
       console.log("resData from body", resData);
       // Menu Item
-      // const ItemCategoriesData =
-      //   json?.data?.cards?.[0]?.card?.card?.imageGridCards?.info || [];
+      const ItemCategoriesData = await useMenuCategories();
       // console.log(specialCusinesData)
       //Restraunt Data
       
-      // setMenuCategories(ItemCategoriesData);
+      setMenuCategories(ItemCategoriesData);
       setRestaurants(resData);
       setAllRestaurants(resData); //Save unfiltered restaurants
       setIsLoading(false); //End loading

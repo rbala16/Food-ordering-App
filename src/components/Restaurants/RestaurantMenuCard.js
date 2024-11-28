@@ -4,7 +4,9 @@ import { useDispatch } from "react-redux";
 import {addItem} from '../../features/cardSlice';
 
 const RestaurantMenuCard = ({ name, price, description, rating, imageId ,ratingCount}) => {
-  const dispatch = useDispatch()
+
+  const dispatch = useDispatch() //Dispatch actions
+  
   const handleAddItem = () => {
       // dispatch action
       dispatch(addItem("Pizza"))
