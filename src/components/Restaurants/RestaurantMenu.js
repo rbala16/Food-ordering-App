@@ -4,6 +4,7 @@ import { RES_MENU_URL } from "../../utils/constants";
 // import RestaurantShimmer from "./RestaurantShimmer";
 import RestaurantMenuCard from "./RestaurantMenuCard";
 import { TfiArrowCircleDown,TfiArrowCircleUp } from "react-icons/tfi";
+import ItemList from "./ItemList";
 
 const RestaurantMenu = () => {
   const { resId } = useParams(); //resId is extracted from the URL using useParams
@@ -43,18 +44,18 @@ const RestaurantMenu = () => {
                 )}
               </h3>
               {itemShouldShow &&
-                menu.card.card.itemCards &&
-                menu.card.card.itemCards.map((item) => (
-                  <RestaurantMenuCard
-                    key={item.card.info.id}
-                    name={item.card.info.name}
-                    price={`₹${item.card.info.price ? item.card.info.price / 100 : item.card.info.defaultPrice / 100}`}
-                    description={item.card.info.description}
-                    rating={item.card.info.ratings.aggregatedRating.rating}
-                    ratingCount={item.card.info.ratings.aggregatedRating.ratingCount}
-                    imageId={item.card.info.imageId}
-                  />
-                ))}
+             <ItemList items=   {menu.card.card.itemCards }/>
+               
+                  // <RestaurantMenuCard
+                  //   key={item.card.info.id}
+                  //   name={item.card.info.name}
+                  //   price={`₹${item.card.info.price ? item.card.info.price / 100 : item.card.info.defaultPrice / 100}`}
+                  //   description={item.card.info.description}
+                  //   rating={item.card.info.ratings.aggregatedRating.rating}
+                  //   ratingCount={item.card.info.ratings.aggregatedRating.ratingCount}
+                  //   imageId={item.card.info.imageId}
+                  // />
+                }
             </div>
           )
       )}

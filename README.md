@@ -10,7 +10,7 @@ filteredList = mock_restaurants;
 
     Shimmer=Skeleton
 
-    rm -rf .parcel-cache
+   rm -rf .parcel-cache 
 
     npm cache clean --force
     npm update parcel
