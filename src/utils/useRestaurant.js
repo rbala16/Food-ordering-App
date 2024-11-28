@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import { RES_INFO_URL, mock_restaurants } from "./constants";
 
-const useRestaurant = async () => {
+const useRestaurant =  () => {
   const [restaurants, setRestaurants] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  
   useEffect(() => {
     const fetchRestaurants = async () => {
       try {
