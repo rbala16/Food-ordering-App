@@ -62,10 +62,10 @@ const Navbar = () => {
         >
           {theme === "light" ? <IoMoonSharp/> : <IoMdSunny/>}
         </a>
-      <a className="text-orange-700 text-3xl p-5 nav-link flex">
+      <Link to="/cart" className="text-orange-700 text-3xl p-5 nav-link flex">
         <AiOutlineShoppingCart />
         {cardItems.length}
-      </a>
+      </Link>
       <div
         onClick={handleShowNav}
         className="block md:hidden mr-6 z-20 "

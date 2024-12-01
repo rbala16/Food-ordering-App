@@ -23,9 +23,9 @@ const RestrauntCard = ({
           src={`${RES_IMG_URL}${cloudinaryImageId}`}
           alt={name}
         />
-        {discount && (
+        {offer && (
           <div className="absolute bottom-0 left-0 right-0  bg-gradient-to-t from-black to-transparent opacity-95 h-16 text-xl  text-white font-bold text-center py-5">
-            {discount}
+            {offer}
           </div>
         )}
       </div>
@@ -40,7 +40,7 @@ const RestrauntCard = ({
         </div>
         <p className="text-gray-600 text-sm truncate">{cuisines}</p>
         <p className="text-gray-600 text-sm italic">{address}</p>
-        <p className="text-gray-600 text-sm truncate">{offer}</p>
+        {/* <p className="text-gray-600 text-sm truncate">{discount}</p> */}
         <p className="text-gray-600 text-sm primary-color">{avaiability}</p>
       </div>
     </div>

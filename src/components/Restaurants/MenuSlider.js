@@ -3,7 +3,7 @@ import React from "react";
 import { RES_IMG_URL } from "../../utils/constants";
 import { useTheme } from "../../context/ThemeContext";
 
-const MenuSlider = ({ ImageId, link,  }) => {
+const MenuSlider = ({ ImageId }) => {
   const {theme} = useTheme();
   return (
     <div className={`p-4 ${ theme === "light"? "bg-white":"bg-gray-800"}`}>
