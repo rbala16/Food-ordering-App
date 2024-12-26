@@ -97,7 +97,7 @@ const Navbar = () => {
           </li>
           <div className="flex-gap-4">
             <button className="rounded-lg h-12 w-28  bg-primary-color shadow-xl nav-link">
-              <span relative="z-10">Sign In</span>
+            <Link to="/login" relative="z-10">Sign In</Link>
             </button>
           </div>
         </ul>

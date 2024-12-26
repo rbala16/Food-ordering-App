@@ -15,6 +15,8 @@ import { Provider } from "react-redux";
 import appStore from "./app/store";
 import ThemeWrapper from "./components/ThemeWrapper";
 import Cart from "./components/Cart/Cart";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
 //only when grocery is invoke ,callback function called
 const Grocery = lazy(()=> import("./components/Grocery/Grocery") )//lazy function
@@ -70,10 +72,19 @@ const appRouter = createBrowserRouter([
         path: "grocery",
         element: <Suspense fallback={<div>Loading...</div>}><Grocery businessName= "Bala Grocery Service" /></Suspense>,//replace with loading untoll grocery is loading
       },
+
       {
         path: "cart",
         element: <Cart />
     },
+    {
+      path: "login",
+      element: <Login/>
+  },
+  {
+    path: "signup",
+    element: <Signup/>
+},
     ],
   },
 ]);
