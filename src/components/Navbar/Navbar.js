@@ -36,7 +36,7 @@ const Navbar = () => {
       </h1>
       <div className="hidden sm:flex gap-3 md:gap-6">
         <button className="rounded-lg h-8 w-20 border border-orange-500 bg-primary-color text-white shadow-2xl lg:text-xl text-base">
-          Sign In
+        <Link to="/login" relative="z-10">Sign In</Link>
         </button>
      
         
@@ -53,7 +53,7 @@ const Navbar = () => {
           <Link to="/contact">Contact</Link>
         </li>
         <li className="p-5 nav-link">
-          <Link to="#">Menu</Link>
+        <Link to="/restaurants">Restaurants</Link>
         </li>
         
       </ul>
@@ -93,7 +93,7 @@ const Navbar = () => {
             <Link to="/contact">Contact</Link>
           </li>
           <li className="p-3 nav-link" onClick={handleNavItemClick}>
-            <Link to="#">Menu</Link>
+            <Link to="/restaurants">Restaurants</Link>
           </li>
           <div className="flex-gap-4">
             <button className="rounded-lg h-12 w-28  bg-primary-color shadow-xl nav-link">
