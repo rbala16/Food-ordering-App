@@ -30,11 +30,11 @@ const HeroSection = () => {
   return (
     <div className="max-w-[1600px] mx-auto gap-4">
       <div className="hero-section  bg-background-image bg-cover bg-center w-full flex flex-col justify-center items-center text-center text-white p-4 min-h-[60vh]">
-        <h1 className="text-4xl md:text-6xl font-bold mb-4">
+        <h1 className="lg:text-5xl text-3xl font-bold mb-4">
           Welcome to BalaFoodClub
         </h1>
 
-        <h2 className="text-3xl font-bold italic p-4">
+        <h2 className="lg:text-4xl text-3xl font-bold italic p-4">
           <span>{text}</span>
           <Cursor cursorBlinking="false" cursorStyle="" cursorColor="#ff014f" />
         </h2>
@@ -44,7 +44,7 @@ const HeroSection = () => {
             className="border border-gray-300 shadow-xl flex items-center bg-gray-100 rounded-md  flex-grow"
           >
             <input
-              className="flex-grow bg-transparent focus:outline-none text-black p-2"
+              className="flex-grow bg-transparent focus:outline-none text-black p-2 lg:text-xl"
               type="text"
               placeholder="Search for restaurants name or your favourite food...."
               value={searchText}
@@ -56,7 +56,7 @@ const HeroSection = () => {
           </form>
           <button
             onClick={handleSearch}
-            className="mt-4 md:mt-0 md:ml-4 rounded-lg h-12 w-full md:w-28 border border-primary-color bg-primary-color text-white shadow-2xl transition duration-300 ease-in-out hover:bg-orange-600"
+            className="mt-4 md:mt-0 md:ml-4 rounded-lg h-12 w-full md:w-28 border border-primary-color bg-primary-color text-white shadow-2xl transition duration-300 ease-in-out hover:bg-orange-600 text-base font-bold"
           >
             Find
           </button>

@@ -9,7 +9,7 @@ const MenuSlider = ({ ImageId }) => {
     <div className={`p-4 ${ theme === "light"? "bg-white":"bg-gray-800"}`}>
       
       <img
-        className="w-full h-48 object-cover rounded-lg "
+        className="lg:w-full sm:w-[70%] sm:h-30 lg:h-48 object-cover rounded-lg "
         src={`${RES_IMG_URL}${ImageId}`}
         alt="res-img"
       />

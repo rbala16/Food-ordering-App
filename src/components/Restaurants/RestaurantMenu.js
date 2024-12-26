@@ -9,7 +9,7 @@ import ItemList from "./ItemList";
 const RestaurantMenu = () => {
   const { resId } = useParams(); //resId is extracted from the URL using useParams
   const [resMenu, setResMenu] = useState([]);
-  const [itemShouldShow, setItemShouldShow] = useState(true); 
+  const [itemShouldShow, setItemShouldShow] = useState(false); 
 
   useEffect(() => {
     fetchResMenu();

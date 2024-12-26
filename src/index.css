@@ -8,6 +8,7 @@
 
 body {
   font-family: "Noto Sans", sans-serif;
+  @apply text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl;
 }
 
 .transparent {
@@ -28,16 +29,18 @@ body {
   transition: color 0.3s ease;  /* Updated */
 }
 
-
+/* body {
+  @apply text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl;
+} */
 .hero-section {
   @apply min-h-screen;
 
   @screen sm {
-    min-height: 50vh;
+    min-height: 60vh;
   }
   
   @screen md {
-    min-height: 70vh;
+    min-height: 80vh;
   }
   
   @screen lg {

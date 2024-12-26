@@ -16,7 +16,7 @@ const Footer = () => {
           <p className="text-sm text-gray-300">
             Delivering the best food experience straight to your doorstep, with quick delivery and quality meals.
           </p>
-          <ul className="mt-4 space-y-2">
+          <ul className="mt-4 space-y-2 text-base">
             <li>📞 +91 1234567890</li>
             <li>✉️ contact@balafoodclub.com</li>
             <li>📍 Chandigarh, Punjab</li>
@@ -48,7 +48,7 @@ const Footer = () => {
             />
             <button 
               type="submit" 
-              className="mt-2 w-full p-2 bg-primary-color rounded-md text-white hover:bg-orange-600">
+              className="mt-2 text-base w-full p-2 bg-primary-color rounded-md text-white hover:bg-orange-600">
               Subscribe
             </button>
           </form>
@@ -68,7 +68,7 @@ const Footer = () => {
         {/* Legal and Policy */}
         <div>
           <h4 className="text-lg font-bold mb-4 primary-color">Policies</h4>
-          <ul className="space-y-2">
+          <ul className="space-y-2 text-base">
             <li><a href="/terms" className="hover:text-primary-color">Terms & Conditions</a></li>
             <li><a href="/privacy" className="hover:text-primary-color">Privacy Policy</a></li>
             <li><a href="/refund" className="hover:text-primary-color">Refund Policy</a></li>

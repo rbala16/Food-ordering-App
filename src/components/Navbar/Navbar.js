@@ -19,6 +19,9 @@ const Navbar = () => {
   const handleShowNav = () => {
     setShowNav(!showNav);
   };
+  const handleNavItemClick = () => {
+    setShowNav(false); // Hide the navigation when an item is clicked
+  };
 
   const cardItems = useSelector((store) => store.cart.items);
 
@@ -28,11 +31,11 @@ const Navbar = () => {
         theme === "light" ? "bg-white text-black" : "bg-gray-800 text-white"
       }`}
     >
-      <h1 className="text-xl md:text-3xl font-bold primary-color ml-4">
+      <h1 className="text-2xl lg:text-3xl font-bold primary-color ml-4">
         BalaFoodClub
       </h1>
       <div className="hidden sm:flex gap-3 md:gap-6">
-        <button className="rounded-lg h-8 w-20 border border-orange-500 bg-primary-color text-white shadow-2xl">
+        <button className="rounded-lg h-8 w-20 border border-orange-500 bg-primary-color text-white shadow-2xl lg:text-xl text-base">
           Sign In
         </button>
      
@@ -52,9 +55,7 @@ const Navbar = () => {
         <li className="p-5 nav-link">
           <Link to="#">Menu</Link>
         </li>
-        <li className="p-5 nav-link">
-          <Link to="/grocery">Grocery</Link>
-        </li>
+        
       </ul>
       <a
           onClick={toggleTheme}
@@ -62,7 +63,7 @@ const Navbar = () => {
         >
           {theme === "light" ? <IoMoonSharp/> : <IoMdSunny/>}
         </a>
-      <Link to="/cart" className="text-orange-700 text-3xl p-5 nav-link flex">
+      <Link to="/cart" className="text-orange-700 lg:text-3xl text-2xl p-5 nav-link flex">
         <AiOutlineShoppingCart />
         {cardItems.length}
       </Link>
@@ -81,17 +82,17 @@ const Navbar = () => {
             : "fixed top-[-100%]"
         }
       >
-        <ul className="p-6 text-xl w-full bg-primary-color rounded-lg text-white">
-          <li className="p-5 nav-link ">
+        <ul className="p-6 text-lg w-full bg-primary-color rounded-lg text-white">
+          <li className="p-3 nav-link " onClick={handleNavItemClick}>
             <Link to="/">Home</Link>
           </li>
-          <li className="p-5 nav-link">
+          <li className="p-3 nav-link" onClick={handleNavItemClick}>
             <Link to="/about">About</Link>
           </li>
-          <li className="p-5 nav-link">
+          <li className="p-3 nav-link"onClick={handleNavItemClick}>
             <Link to="/contact">Contact</Link>
           </li>
-          <li className="p-5 nav-link">
+          <li className="p-3 nav-link" onClick={handleNavItemClick}>
             <Link to="#">Menu</Link>
           </li>
           <div className="flex-gap-4">

@@ -8,8 +8,17 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage:{"background-image": "url('/src/assets/images/background-img.jpg')"}
+      backgroundImage:{"background-image": "url('/src/assets/images/background-img.jpg')"},
+      screens:{
+      xs: '480px',   //x-small screen
+      sm: '640px',   // Small screens
+      md: '768px',   // Medium screens
+      lg: '1024px',  // Large screens
+      xl: '1280px',  // X-Large screens
+      '2xl': '1536px', // 2X-Large screens
+      },
     },
+    
   },
   plugins: [],
 }

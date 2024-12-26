@@ -87,15 +87,7 @@ const RestaurantList = () => {
       },
     ],
   };
-  //useEffect
-  // useEffect(() => {
-  //   console.log("component is re rendered");
-  //   // fetchData();
 
-  //   setFilteredRestaurants(itemCategories);
-  //   setFilteredRestaurants(restaurants);
-  // }, []);
- 
 
   const handleTopRatedRestaurants = () => {
     const filteredList = restaurants.filter((restaurant) => {
@@ -164,7 +156,7 @@ const RestaurantList = () => {
           Restaurants with online food delivery in your area
         </h1>
         {/* Filter buttons */}
-        <div>
+        <div className="text-base">
           <button
             className=" p-1 border-2 bg-white rounded-2xl m-4"
             onClick={handleTopRatedRestaurants}
@@ -185,7 +177,7 @@ const RestaurantList = () => {
           </button>
         </div>
         {/* Restaurant Card List */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 xs:m-4">
           {filteredRestaurants.length > 0 ? (
             filteredRestaurants.map((restaurant, index) => (
               <Link to={"restaurantmenu/" + restaurant.info.id}>

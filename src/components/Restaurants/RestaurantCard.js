@@ -16,7 +16,7 @@ const RestrauntCard = ({
   const {theme} = useTheme();
 
   return (
-    <div className={`${ theme === "light"? "bg-white":"bg-gray-800"} rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-xl duration-300`}>
+    <div className={`${ theme === "light"? "bg-white":"bg-gray-800"} rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-xl duration-300 `}>
       <div className="relative shadow-lg">
         <img
           className="w-full h-[200px] object-cover rounded"

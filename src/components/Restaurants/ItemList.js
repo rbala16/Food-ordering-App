@@ -33,7 +33,7 @@ const ItemList = ({ items }) => {
         <div className="sm:py-2 bg-white flex flex-col md:flex-row items-center md:items-center border-b-2 border-gray-200 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-xl duration-300">
           <div className="w-1/4 relative">
             <img
-              className="lg:w-full lg:h-full  sm:h-[200px] sm:max-w-[200px] object-cover rounded-l-lg"
+              className="w-full h-full   object-cover rounded-l-lg"
               src={`${RES_MENU_IMG_URL}${item.card.info.imageId}`}
               alt={item.card.info.name}
             />
