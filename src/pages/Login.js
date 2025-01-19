@@ -13,14 +13,14 @@ const Login = () => {
         }`}
       >
         {/* Main container */}
-        <div className="flex bg-white rounded-2xl w-[800px] h-[600px] shadow-lg">
+        <div className="flex flex-col md:flex-row bg-white rounded-2xl md:w-[800px] md:h-[600px]  shadow-lg ">
           {/* Left side login page */}
           <div className="md:w-1/2 hidden md:block">
-            <div className="bg-loginImg h-full rounded-l-2xl bg-cover bg-center shadow-md"></div>
+            <div className="bg-loginImg h-full rounded-tl-2xl md:rounded-l-2xl  bg-cover bg-center shadow-md"></div>
           </div>
           {/* Right side login page */}
-          <div className="md:w-1/2 p-8 rounded-tr-2xl">
-            <h2 className="text-3xl font-semibold ">Login:</h2>
+          <div className="w-full md:w-1/2 p-6 md:p-8 rounded-tr-2xl">
+            <h2 className="text-2xl md:text-3xl font-semibold text-center md:text-left ">Login:</h2>
             <form className="flex flex-col gap-4 mt-6">
               <div className="mb-4">
                 <label className="block text-sm font-semibold" htmlFor="email">

@@ -5,15 +5,26 @@ import { RES_MENU_URL } from "../../utils/constants";
 import RestaurantMenuCard from "./RestaurantMenuCard";
 import { TfiArrowCircleDown,TfiArrowCircleUp } from "react-icons/tfi";
 import ItemList from "./ItemList";
+import { BsCart4 } from "react-icons/bs";
+import Cart from "../Cart/Cart";
+import { useSelector,useDispatch } from "react-redux";
+import { toggleCart } from "../../features/cardSlice";
 
 const RestaurantMenu = () => {
+  const dispatch = useDispatch();
+  const isCartOpen = useSelector((state) => state.cart.isCartOpen);
+  const cartItems = useSelector((state) => state.cart.items);
+
   const { resId } = useParams(); //resId is extracted from the URL using useParams
   const [resMenu, setResMenu] = useState([]);
   const [itemShouldShow, setItemShouldShow] = useState(false); 
 
+ 
   useEffect(() => {
     fetchResMenu();
   }, []);
+  
+  
 
   const fetchResMenu = async () => {
     const resMenuAPI = await fetch(RES_MENU_URL + resId);
@@ -25,6 +36,11 @@ const RestaurantMenu = () => {
   const handleClick = () => {
     setItemShouldShow(!itemShouldShow)
 }
+
+const handleToggleCart = () => {
+  dispatch(toggleCart());
+};
+
 
   return (
     <div className="w-3/4 mx-auto mt-6 space-y-4">
@@ -59,6 +75,17 @@ const RestaurantMenu = () => {
             </div>
           )
       )}
+ {/* Card Drawer */}
+ <button
+        onClick={handleToggleCart}
+        className="fixed bottom-0 right-0 text-white bg-primary-color rounded-3xl lg:text-3xl text-2xl flex p-2 hover:bg-white"
+      >
+        <BsCart4 />
+        <span className="text-xl"> {cartItems.reduce((total, item) => total + (item.quantity || 1), 0)}</span>
+      </button>
+
+      {/* Conditionally render the Cart component */}
+      {isCartOpen && <Cart />}
     </div>
   );
 };

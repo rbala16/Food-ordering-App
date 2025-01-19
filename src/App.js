@@ -1,8 +1,6 @@
 import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
-import HeroSection from "./components/HeroSection/HeroSection";
-
 import Contact from "./components/Contact/Contact";
 import About from "./components/About/About";
 import Error from "./components/Error/Error";
@@ -17,21 +15,21 @@ import ThemeWrapper from "./components/ThemeWrapper";
 import Cart from "./components/Cart/Cart";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Home from "./pages/Home";
 
 //only when grocery is invoke ,callback function called
-const Grocery = lazy(()=> import("./components/Grocery/Grocery") )//lazy function
+const Grocery = lazy(() => import("./components/Grocery/Grocery")); //lazy function
 const App = () => {
   return (
-    
     <div>
       <Provider store={appStore}>
-      <ThemeProvider>
-        <ThemeWrapper>
-      <Navbar />
-      <Outlet />
-      <Footer />
-      </ThemeWrapper>
-      </ThemeProvider>
+        <ThemeProvider>
+          <ThemeWrapper>
+            <Navbar />
+            <Outlet />
+            <Footer />
+          </ThemeWrapper>
+        </ThemeProvider>
       </Provider>
     </div>
   );
@@ -45,12 +43,7 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: (
-          <>
-            <HeroSection />
-            <RestaurantList />
-          </>
-        ),
+        element: <Home/>,
       },
       {
         path: "restaurants",
@@ -66,25 +59,29 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "restaurantmenu/:resId",
-        element: <RestaurantMenu/>,
+        element: <RestaurantMenu />,
       },
       {
         path: "grocery",
-        element: <Suspense fallback={<div>Loading...</div>}><Grocery businessName= "Bala Grocery Service" /></Suspense>,//replace with loading untoll grocery is loading
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Grocery businessName="Bala Grocery Service" />
+          </Suspense>
+        ), //replace with loading untoll grocery is loading
       },
 
       {
         path: "cart",
-        element: <Cart />
-    },
-    {
-      path: "login",
-      element: <Login/>
-  },
-  {
-    path: "signup",
-    element: <Signup/>
-},
+        element: <Cart />,
+      },
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "signup",
+        element: <Signup />,
+      },
     ],
   },
 ]);

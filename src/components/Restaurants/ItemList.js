@@ -30,8 +30,9 @@ const ItemList = ({ items }) => {
   return (
     <div>
       {items?.map((item) => (
-        <div className="sm:py-2 bg-white flex flex-col md:flex-row items-center md:items-center border-b-2 border-gray-200 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-xl duration-300">
-          <div className="w-1/4 relative">
+        <div className=" bg-white flex flex-col md:flex-row items-center md:items-center border-b-2 border-gray-200 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-95 hover:shadow-xl duration-300 cursor-pointer
+        ">
+          <div className="w-1/4 relative my-2 shadow-lg border-gray-200">
             <img
               className="w-full h-full   object-cover rounded-l-lg"
               src={`${RES_MENU_IMG_URL}${item.card.info.imageId}`}
@@ -39,7 +40,7 @@ const ItemList = ({ items }) => {
             />
           </div>
 
-          <div className="lg:p-4   w-3/4">
+          <div className="lg:p-4 md:p-2   w-3/4">
             <h3 className="text-lg font-semibold text-gray-800 truncate">
               {item.card.info.name}
             </h3>
@@ -83,7 +84,7 @@ const ItemList = ({ items }) => {
           ) : (
             <button
               onClick={() => handleAddItem(item)}
-              className="text-white bg-primary-color px-4 py-2 rounded-full font-semibold shadow hover:bg-primary-color ml-auto mr-4"
+              className="text-white bg-primary-color px-4 py-2 rounded-full font-semibold items-center shadow hover:bg-primary-color  mr-4 my-2 md:my-2"
             >
               ADD
             </button>

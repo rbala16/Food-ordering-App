@@ -63,10 +63,10 @@ const Navbar = () => {
         >
           {theme === "light" ? <IoMoonSharp/> : <IoMdSunny/>}
         </a>
-      <Link to="/cart" className="text-orange-700 lg:text-3xl text-2xl p-5 nav-link flex">
+      {/* <Link to="/cart" className="text-orange-700 lg:text-3xl text-2xl p-5 nav-link flex">
         <AiOutlineShoppingCart />
-        {cardItems.length}
-      </Link>
+        {cardItems.length }
+      </Link> */}
       <div
         onClick={handleShowNav}
         className="block md:hidden mr-6 z-20 "

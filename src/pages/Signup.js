@@ -3,7 +3,7 @@ import React from "react";
 const Signup = ({ onClose }) => {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-      <div className="bg-white p-8 rounded-lg w-5/12 shadow-lg relative z-20 ">
+      <div className="bg-white p-8 rounded-lg lg:w-5/12  shadow-lg relative z-20 ">
         <h2 className="text-2xl font-bold mb-4">Welcome to Sign Up</h2>
         <form className="flex flex-col gap-4 mt-6 ">
           {/* input type name */}
