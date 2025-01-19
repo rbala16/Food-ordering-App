@@ -12,6 +12,8 @@ export const RES_FOOD_ITEMS_URL =
   "https://www.swiggy.com/dapi/restaurants/list/v5?lat=30.76879019999999&lng=76.5753719&collection=83631";
 export const RES_MENU_IMG_URL =
   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/";
+  export const USER_AVATAR = "https://wallpapers.com/images/high/netflix-profile-pictures-1000-x-1000-88wkdmjrorckekha.webp";
+  
   export const mock_restaurants = [
     {
         "info": {

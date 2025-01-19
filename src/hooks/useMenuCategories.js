@@ -1,5 +1,5 @@
 import React, { useEffect ,useState} from "react";
-import { RES_INFO_URL } from "./constants";
+import { RES_INFO_URL } from "../utils/constants";
 
 const useMenuCategories = () => {
   const [itemCategories, setItemCategories] = useState([]);

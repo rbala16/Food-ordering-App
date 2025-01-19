@@ -1,5 +1,5 @@
 import React, { useEffect,useState } from "react";
-import { RES_INFO_URL, mock_restaurants } from "./constants";
+import { RES_INFO_URL, mock_restaurants } from "../utils/constants";
 
 const useRestaurant =  () => {
   const [restaurants, setRestaurants] = useState([]);

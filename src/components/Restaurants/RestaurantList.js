@@ -8,8 +8,8 @@ import "slick-carousel/slick/slick-theme.css";
 import { useLocation } from "react-router-dom"; // For getting URL parameters
 import { Link } from "react-router-dom";
 import withPromotedLabel from "./withPromotedLabel";
-import useRestaurant from "../../utils/useRestaurant";
-import useMenuCategories from "../../utils/useMenuCategories";
+import useRestaurant from "../../hooks/useRestaurant";
+import useMenuCategories from "../../hooks/useMenuCategories";
 import { useTheme } from "../../context/ThemeContext";
 
 const RestaurantList = () => {
