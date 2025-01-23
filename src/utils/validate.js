@@ -1,6 +1,6 @@
 export const checkValidCredentials = (email, password) => {
   // Validate email format
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Simplified regex for email validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
   if (!email) {
     return "Please enter your email address.";
   }
