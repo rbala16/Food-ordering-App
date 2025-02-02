@@ -2,6 +2,8 @@
 
 npm install --save-dev parcel
 
+git pull --rebase origin main
+
 let filteredList;
 filteredList = mock_restaurants;
 // const[filteredList] = useState(mock_restaurants);
