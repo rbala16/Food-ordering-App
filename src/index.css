@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.primary-color {
+  @apply text-transparent bg-clip-text bg-gradient-to-l from-orange-800 to-orange-500 inline-block;
+}
+
+/* body {
+  font-family: "Noto Sans", sans-serif;
+  @apply text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl;
+} */
+
+.transparent {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.bg-primary-color {
+  @apply bg-gradient-to-l from-orange-800 to-orange-500;
+}
+
+.nav-link:hover {
+  color: rgba(245, 96, 9, 0.947); 
+  transition: color 0.3s ease;  /* Updated */
+}
+
+/* body {
+  @apply text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl;
+} */
+.hero-section {
+  @apply min-h-screen;
+
+  @screen sm {
+    min-height: 60vh;
+  }
+  
+  @screen md {
+    min-height: 80vh;
+  }
+  
+  @screen lg {
+    min-height: 90vh;
+  }
+} 
+
+
+
+
+/* For slick dots */
+.slick-dots li button:before {
+  color: #f97316; /* Orange-500 */
+}
+.slick-dots li.slick-active button:before {
+  color: #9a3412; /* Orange-800 */
+}
+
+/* For slick arrows */
+.slick-prev,
+.slick-next {
+  color: #f97316; /* Orange-500 */
+}
